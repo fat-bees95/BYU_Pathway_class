@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teachings of Living Prophets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="background/First_Presidency.jpg" ="H"></a>
+  </header>
+
+  <section class="main-content">
+    <div class="sidebar">
+      <ul>
+        <li><a href="#" data-page="page1.html">Page 1</a></li>
+        <li><a href="#" data-page="page2.html">Page 2</a></li>
+        <li><a href="#" data-page="page3.html">Page 3</a></li>
+        <li><a href="#" data-page="page4.html">Page 4</a></li>
+        <li><a href="#" data-page="page5.html">Page 5</a></li>
+        <li><a href="#" data-page="page6.html">Page 6</a></li>
+        <li><a href="#" data-page="page7.html">Page 7</a></li>
+        <li><a href="#" data-page="page8.html">Page 8</a></li>
+        <li><a href="#" data-page="video.html">Video</a></li>
+      </ul>
+    </div>
+
+    <div class="dynamic-content" id="content">
+      
+    </div>
+  </section>
+<footer>
+    <p>Created by Fabio Bejarano – BYU–Pathway Class</p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        © <span id="year"></span> Creative Commons BY-NC-SA 4.0 License
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[data-page]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const page = e.target.getAttribute('data-page');
+        fetch(page)
+          .then(response => response.text())
+          .then(html => {
+            document.getElementById('content').innerHTML = html;
+          });
+      });
+    });
+  </script>
+</body>
+</html>
